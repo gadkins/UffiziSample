@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SampleApplication.Data;
+using Microsoft.AspNetCore.SpaServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,11 @@ namespace SampleApplication
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample Joke Application", Version = "v1" });
             });
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "client/build";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +55,8 @@ namespace SampleApplication
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseRouting();
 
@@ -57,6 +65,11 @@ namespace SampleApplication
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client";
             });
         }
     }
