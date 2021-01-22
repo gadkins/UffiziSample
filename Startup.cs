@@ -46,11 +46,11 @@ namespace SampleApplication
         }
 
         private string BuildConnectionString() {
-            var server = Environment.GetEnvironmentVariable("UFFIZZI_SERVER");
-            var port = Environment.GetEnvironmentVariable("UFFIZZI_PORT");
-            var database = Environment.GetEnvironmentVariable("UFFIZZI_DATABASE");
-            var userId = Environment.GetEnvironmentVariable("UFFIZZI_USER_ID");
-            var password = Environment.GetEnvironmentVariable("UFFIZZI_PASSSWORD");
+            var server = Environment.GetEnvironmentVariable("SERVER");
+            var port = Environment.GetEnvironmentVariable("PORT");
+            var database = Environment.GetEnvironmentVariable("DATABASE");
+            var userId = Environment.GetEnvironmentVariable("USER_ID");
+            var password = Environment.GetEnvironmentVariable("PASSSWORD");
 
             return $"Server={server};Port={port};Database={database};User Id={userId};Password={password}";
         }
