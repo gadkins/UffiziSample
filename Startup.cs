@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using SampleApplication.Data;
 using Microsoft.AspNetCore.SpaServices;
@@ -35,7 +36,7 @@ namespace SampleApplication
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample Joke Application", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Sample Joke Application", Version = "v1" });
             });
 
             services.AddSpaStaticFiles(configuration =>
