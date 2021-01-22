@@ -10,6 +10,6 @@ namespace SampleApplication.Data
 
         }
 
-        public DbSet<Joke> Joke { get; set; }
+        public DbSet<joke> joke { get; set; }
     }
 }
