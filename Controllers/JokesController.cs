@@ -23,7 +23,7 @@ namespace SampleApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> GetJokes()
         {
-            var jokes = await _context.Joke.ToListAsync();
+            var jokes = await _context.joke.ToListAsync();
             return Ok(jokes);
         }
     }

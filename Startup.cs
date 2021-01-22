@@ -30,8 +30,8 @@ namespace SampleApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+         
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(BuildConnectionString()));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -45,6 +45,15 @@ namespace SampleApplication
             });
         }
 
+        private string BuildConnectionString() {
+            var server = Environment.GetEnvironmentVariable("UFFIZZI_SERVER");
+            var port = Environment.GetEnvironmentVariable("UFFIZZI_PORT");
+            var database = Environment.GetEnvironmentVariable("UFFIZZI_DATABASE");
+            var userId = Environment.GetEnvironmentVariable("UFFIZZI_USER_ID");
+            var password = Environment.GetEnvironmentVariable("UFFIZZI_PASSSWORD");
+
+            return $"Server={server};Port={port};Database={database};User Id={userId};Password={password}";
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
