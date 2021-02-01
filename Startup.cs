@@ -46,9 +46,9 @@ namespace SampleApplication
         }
 
         private string BuildConnectionString() {
-            var server = Environment.GetEnvironmentVariable("SERVER");
-            var port = Environment.GetEnvironmentVariable("PORT");
-            var database = Environment.GetEnvironmentVariable("DATABASE");
+            var server = Environment.GetEnvironmentVariable("DB_HOST");
+            var port = Environment.GetEnvironmentVariable("DB_PORT");
+            var database = Environment.GetEnvironmentVariable("DB_NAME");
             var userId = Environment.GetEnvironmentVariable("USER_ID");
             var password = Environment.GetEnvironmentVariable("PASSSWORD");
 
